@@ -1,0 +1,48 @@
+# Frontend
+## Dependency directories
+node_modules/
+
+## Build artifacts
+dist/
+build/
+.next/
+out/
+
+# Backend
+## Node.js
+.env
+.env.test
+.env.prod
+.env.local
+*.env
+package-lock.json
+yarn.lock
+
+## Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+## Coverage
+coverage/
+.nyc_output/
+
+## IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+## OS metadata
+.DS_Store
+Thumbs.db
+
+# LocalStorage backups (if any)
+*.bak

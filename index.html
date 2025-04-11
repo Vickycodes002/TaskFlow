@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Smart Productivity App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar for Desktop -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <h1>TaskFlow</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li data-section="stats">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Statistics</span>
+                    </li>
+                    <li data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="theme-switch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav">
+            <div class="nav-item active" data-section="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </div>
+            <div class="nav-item" data-section="stats">
+                <i class="fas fa-chart-line"></i>
+                <span>Stats</span>
+            </div>
+            <div class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero" data-aos="fade-up">
+                <h1 id="typing-text"></h1>
+                <p>Your smart productivity assistant powered by AI</p>
+            </section>
+
+            <!-- Dashboard Section -->
+            <section class="section dashboard-section active-section">
+                <div class="task-controls">
+                    <div class="task-input">
+                        <input type="text" id="task-title" placeholder="Add a new task...">
+                        <input type="text" id="task-desc" placeholder="Description (optional)">
+                        <select id="task-category">
+                            <option value="general">General</option>
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                        <button id="add-task-btn" class="btn-primary">Add Task</button>
+                    </div>
+                    <div class="task-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="work">Work</button>
+                        <button class="filter-btn" data-filter="personal">Personal</button>
+                        <button class="filter-btn" data-filter="urgent">Urgent</button>
+                    </div>
+                </div>
+
+                <div class="tasks-container" id="tasks-container">
+                    <!-- Tasks will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section stats-section">
+                <h2>Your Productivity Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="fade-up">
+                        <h3>Today</h3>
+                        <p class="stat-value" id="today-completed">0</p>
+                        <p class="stat-label">Tasks Completed</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>This Week</h3>
+                        <p class="stat-value" id="week-completed">0</p>
+                        <p class="stat-label">Tasks Completed</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Completion Rate</h3>
+                        <p class="stat-value" id="completion-rate">0%</p>
+                        <p class="stat-label">This Week</p>
+                    </div>
+                </div>
+                <div class="chart-container" data-aos="fade-up">
+                    <canvas id="productivity-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="section settings-section">
+                <h2>Settings</h2>
+                <div class="settings-grid">
+                    <div class="setting-card" data-aos="fade-up">
+                        <h3>Appearance</h3>
+                        <div class="theme-setting">
+                            <span>Dark Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="settings-theme-switch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="setting-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Data</h3>
+                        <button id="clear-tasks-btn" class="btn-danger">Clear All Tasks</button>
+                        <p class="setting-description">This will permanently delete all your tasks.</p>
+                    </div>
+                    <div class="setting-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3>About TaskFlow</h3>
+                        <p class="setting-description">TaskFlow is a smart productivity app that helps you organize your tasks with AI-powered subtask generation.</p>
+                        <p class="version">Version 1.0.0</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loading-modal">
+        <div class="modal-content">
+            <div class="loader"></div>
+            <p>Generating subtasks with AI...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
