@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let productivityChart = null;
 
     // Configuration (Update these for production)
-    const PROXY_URL = 'http://localhost:3001'; // Change to your deployed proxy URL
+    const PROXY_URL = 'https://taskflow-hs40.onrender.com'; // Change to your deployed proxy URL
 
     // Initialize AOS animations
     AOS.init({
